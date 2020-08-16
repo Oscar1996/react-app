@@ -1,0 +1,26 @@
+version: '3'
+
+# services is like containers
+services: 
+  # name of the container
+  react:
+    # image we wanto to build
+    # dot(.) here means current directory like pwd
+    build: 
+      # the dockerfile has to be in the same level as docker-compose
+      context: . 
+      dockerfile: Dockerfile.dev
+    ports: 
+      - 3000:3000
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    command: ["npm", "run", "test"]
+    
