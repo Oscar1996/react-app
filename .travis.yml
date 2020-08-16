@@ -5,3 +5,15 @@ before_install:
   - docker build -t oscarval196/react-app -f Dockerfile.dev .
 script:
   - docker run -e CI=true oscarval196/react-app npm run test -- --coverage
+deploy:
+  provide: elasticbeanstalk
+  regioin: "us-east-2"
+  app: "first-web"
+  env: "FirstWeb-env"
+  bucket_name: "elasticbeanstalk-us-east-2-980706433400"
+  bucket_path: "first-web"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
