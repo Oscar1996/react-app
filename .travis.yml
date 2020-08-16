@@ -6,8 +6,8 @@ before_install:
 script:
   - docker run -e CI=true oscarval196/react-app npm run test -- --coverage
 deploy:
-  provide: elasticbeanstalk
-  regioin: "us-east-2"
+  provider: elasticbeanstalk
+  region: "us-east-2"
   app: "first-web"
   env: "FirstWeb-env"
   bucket_name: "elasticbeanstalk-us-east-2-980706433400"
