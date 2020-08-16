@@ -4,4 +4,4 @@ services:
 before_install:
   - docker build -t oscarval196/react-app -f Dockerfile.dev .
 script:
-  - docker run oscarval196/react-app npm run test -- --coverage
+  - docker run -e CI=true oscarval196/react-app npm run test -- --coverage
